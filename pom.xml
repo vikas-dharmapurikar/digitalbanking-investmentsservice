@@ -5,7 +5,7 @@
 	<groupId>com.capgemini.dbt</groupId>
 	<artifactId>investmentservices</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>Investment Services</name>
 	<url>http://maven.apache.org</url>
