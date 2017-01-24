@@ -3,3 +3,4 @@ applications:
   host: digitalbanking-investmentsservice
   memory: 256MB
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  command:"java -jar target/investmentservices-1.0.jar server configuration.yml"
