@@ -1,5 +1,9 @@
 applications:
 - name: digitalbanking-investmentsservice
-  host: digitalbanking-investmentsservice
-  memory: 256MB
   buildpack: https://github.com/celkins/dropwizard-buildpack.git
+  memory: 1024M
+  instances: 1
+  env:
+    SPRING_PROFILES_ACTIVE: prod, cloudfoundry
+  host: digitalbanking-investmentsservice
+  disk_quota: 1024M
