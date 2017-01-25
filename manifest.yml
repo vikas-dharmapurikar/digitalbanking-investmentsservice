@@ -2,4 +2,4 @@ applications:
 - name: digitalbanking-investmentsservice
   host: digitalbanking-investmentsservice
   memory: 256MB
-  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  buildpack: https://github.com/celkins/dropwizard-buildpack.git
