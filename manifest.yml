@@ -1,9 +1,3 @@
-applications:
-- name: digitalbanking-investmentsservice
-  buildpack: https://github.com/celkins/dropwizard-buildpack.git
-  memory: 1024M
-  instances: 1
-  env:
-    SPRING_PROFILES_ACTIVE: prod, cloudfoundry
-  host: digitalbanking-investmentsservice
-  disk_quota: 1024M
+Manifest-Version: 1.0
+Sealed: true
+Main-Class: main.java.com.capg.investmentservices.InvestmentApp.java
