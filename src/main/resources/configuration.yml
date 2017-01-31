@@ -9,7 +9,7 @@ database:
   password: ZVQ-bpsoifnySiYHrmvr4rq0SnziO_bC
 
   # the JDBC URL
-  url: jdbc:postgres://echo.db.elephantsql.com:5432/rbmdovyy
+  url: jdbc:postgresql://echo.db.elephantsql.com:5432/rbmdovyy
 
   # any properties specific to your JDBC driver:
   properties:
