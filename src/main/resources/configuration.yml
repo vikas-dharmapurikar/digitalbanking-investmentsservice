@@ -26,7 +26,7 @@ database:
   minSize: 2
 
   # the maximum number of connections to keep open
-  maxSize: 5
+  maxSize: 4
 
   # whether or not idle connections should be validated
   checkConnectionWhileIdle: false
