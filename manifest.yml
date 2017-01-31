@@ -1,3 +1,9 @@
 Manifest-Version: 1.0
 Sealed: true
 Main-Class: main.java.com.capg.investmentservices.InvestmentApp
+applications:
+- name: digitalbanking-investmentsservice
+  host: digitalbanking-loansservice
+  services:
+  - InvestmentServiceDb
+
