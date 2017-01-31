@@ -3,13 +3,13 @@ database:
   driverClass: org.postgresql.Driver
 
   # the username
-  user: nnunyula
+  user: rbmdovyy
 
   # the password
-  password: Od2-gjgvOKXWf1_AAN0bRU5CMN0cbmPC
+  password: ZVQ-bpsoifnySiYHrmvr4rq0SnziO_bC
 
   # the JDBC URL
-  url: jdbc:postgres://nnunyula:Od2-gjgvOKXWf1_AAN0bRU5CMN0cbmPC@echo.db.elephantsql.com:5432/nnunyula
+  url: jdbc:postgres://rbmdovyy:ZVQ-bpsoifnySiYHrmvr4rq0SnziO_bC@echo.db.elephantsql.com:5432/rbmdovyy
 
   # any properties specific to your JDBC driver:
   properties:
