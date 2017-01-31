@@ -1,6 +1,5 @@
 applications:
 - name: digitalbanking-investmentsservice
-  host: digitalbanking-investmentsservice
   services:
   - InvestmentServiceDb
 Manifest-Version: 1.0
