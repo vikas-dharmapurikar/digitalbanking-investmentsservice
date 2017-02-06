@@ -2,24 +2,12 @@ package com.capg.investmentservices.dao;
 
 import java.util.List;
 
-import org.hibernate.SessionFactory;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.capg.investmentservices.model.Investment;
 
-import io.dropwizard.hibernate.AbstractDAO;
+public interface InvestmentDAO extends JpaRepository<Investment,Integer> {
 
-public class InvestmentDAO extends AbstractDAO<Investment> {
-
-	public InvestmentDAO(SessionFactory sessionFactory) {
-		super(sessionFactory);
-	}
-
-	public List<Investment> findByCustomerId(int customerId) {
-		return list(namedQuery("com.capg.investmentservices.investment.GetByCustomerId").setParameter("customerId",
-				customerId));
-	}
-
-	public Investment findByInvestmentNo(long investmentNo) {
-		return get(investmentNo);
-	}
+	public List<Investment> findByCustomerId(Integer customerId);
+	public Investment findByInvestmentId(Long investmentId);
 }

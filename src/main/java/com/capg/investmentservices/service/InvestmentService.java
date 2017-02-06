@@ -6,7 +6,7 @@ import com.capg.investmentservices.model.Investment;
 
 public interface InvestmentService {
 
-	List<Investment> getAllInvestment(int customerId);
+	List<Investment> getAllInvestment(Integer customerId);
 
-	Investment getInvestmentDetails(int investmentId);
+	Investment getInvestmentDetails(Long investmentId);
 }

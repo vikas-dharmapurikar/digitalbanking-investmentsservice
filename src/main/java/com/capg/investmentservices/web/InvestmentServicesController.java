@@ -1,29 +1,30 @@
 package com.capg.investmentservices.web;
 
 import java.util.List;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.capg.investmentservices.model.Investment;
 import com.capg.investmentservices.service.InvestmentService;
-import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/investmentservices")
-@Produces(MediaType.APPLICATION_JSON)
+@RestController
+@ComponentScan("com.capg.investmentservices")
+@EnableAutoConfiguration
 public class InvestmentServicesController {
-
+	
+	@Autowired
 	private InvestmentService investmentService;
 
-	public InvestmentServicesController(InvestmentService investmentService) {
-		this.investmentService = investmentService;
-	}
-
-	@Path("/{customerId}/investments")
-	@GET
-	@UnitOfWork
-	public List<Investment> getCardList(@PathParam("customerId") int customerId) {
+	@CrossOrigin
+	@RequestMapping(value="/investmentservices/{customerId}/investments",method = RequestMethod.GET)
+	public List<Investment> getCardList(@PathVariable Integer customerId) {
 		return this.investmentService.getAllInvestment(customerId);
 	}
 }
