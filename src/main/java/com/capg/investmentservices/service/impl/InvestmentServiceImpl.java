@@ -1,13 +1,19 @@
 package com.capg.investmentservices.service.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.capg.investmentservices.dao.InvestmentDAO;
+import com.capg.investmentservices.dao.TransactionDao;
 import com.capg.investmentservices.model.Investment;
+import com.capg.investmentservices.model.Transaction;
 import com.capg.investmentservices.service.InvestmentService;
 /***
  * Investment service implementation for investment DB
@@ -22,6 +28,12 @@ public class InvestmentServiceImpl implements InvestmentService {
 	@Autowired
 	private InvestmentDAO investmentDAO;
 
+	@Autowired
+	private TransactionDao transactionDao;
+
+	@Value("${max.recent.transactions}")
+	private Integer maxRecentTransactions;
+	
 	public List<Investment> getAllInvestment(Integer customerId) {
 		if(customerId == null) {
 			logger.warn("Invalid customerId for finding investment list By CustomerId : "+customerId);
@@ -36,5 +48,24 @@ public class InvestmentServiceImpl implements InvestmentService {
 			return null;
 		}
 		return investmentDAO.findByInvestmentId(investmentId);
+	}
+
+	@Override
+	public List<Transaction> getRecentTransactions(Integer accountNum, String startDate, String endDate) {
+		Date startDt;
+		List<Transaction> txList =null;
+		try {
+			startDt = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+			Date endDt =new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+			txList = transactionDao.getTransactions(accountNum, startDt, endDt);
+
+			// Get max 10 recent transactions
+			if(txList!= null && txList.size()>maxRecentTransactions){
+				txList = txList.subList(0, maxRecentTransactions-1);
+			}
+		} catch (ParseException e) {
+			logger.error(e.getMessage());
+		}
+		return txList;
 	}
 }

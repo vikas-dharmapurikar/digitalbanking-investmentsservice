@@ -34,3 +34,27 @@ CREATE TABLE public.investment
 
 ALTER TABLE public.investment
     OWNER to postgres;
+    
+CREATE TABLE public.investment_transaction
+(
+    sno numeric(16) NOT NULL,
+    scheme_name character varying(100),
+    folio_no numeric(16),
+    quantity numeric(10),
+    avg_cost numeric(10, 2),
+    cost_of_current_holding numeric(10, 2),
+    nav numeric(10, 2),
+    current_value numeric(10, 2),
+    unrealised_loss_gain numeric(10, 2),
+    unrealised_loss_gain_percent numeric(5, 2),
+    value_date date,
+    PRIMARY KEY (sno)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.investment_transaction
+    OWNER to postgres;
+    

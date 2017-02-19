@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.investmentservices.model.Investment;
+import com.capg.investmentservices.model.Transaction;
 import com.capg.investmentservices.service.InvestmentService;
 
 @RestController
@@ -26,5 +27,13 @@ public class InvestmentServicesController {
 	@RequestMapping(value="/investmentservices/{customerId}/investments",method = RequestMethod.GET)
 	public List<Investment> getCardList(@PathVariable Integer customerId) {
 		return this.investmentService.getAllInvestment(customerId);
+	}
+
+	@RequestMapping(value="/investmentservices/{investmentId}/{startDate}/{endDate}/getRecentTransactions"
+			,method = RequestMethod.POST)
+	public List<Transaction> getRecentTransactions(@PathVariable Integer investmentId
+			, @PathVariable String startDate
+			, @PathVariable String endDate) {
+		return investmentService.getRecentTransactions(investmentId, startDate, endDate);
 	}
 }
