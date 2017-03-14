@@ -39,6 +39,7 @@ public class InvestmentServiceImpl implements InvestmentService {
 			logger.warn("Invalid customerId for finding investment list By CustomerId : "+customerId);
 			return null;
 		}
+		logger.info("finding By Customer Id");
 		return investmentDAO.findByCustomerId(customerId);
 	}
 
@@ -47,6 +48,7 @@ public class InvestmentServiceImpl implements InvestmentService {
 			logger.warn("Invalid investmentId for finding investment list By CustomerId : "+investmentId);
 			return null;
 		}
+		logger.info("finding By Investment Id");
 		return investmentDAO.findByInvestmentId(investmentId);
 	}
 
@@ -66,6 +68,7 @@ public class InvestmentServiceImpl implements InvestmentService {
 		} catch (ParseException e) {
 			logger.error(e.getMessage());
 		}
+		logger.info("Getting Recent Transactions");
 		return txList;
 	}
 }
