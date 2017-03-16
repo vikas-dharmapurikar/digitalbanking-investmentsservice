@@ -19,8 +19,8 @@ RUN git clone https://github.com/caprepo/digitalbanking-investmentsservice.git
 RUN cd /digitalbanking-investmentsservice
 RUN mvn -f /digitalbanking-investmentsservice/pom.xml clean install -DskipTests
 
-COPY newrelic/ /opt/
+#COPY newrelic/ /opt/
 
 EXPOSE 8150
-
-ENTRYPOINT ["-Dnewrelic-config-file=/opt/newrelic/newrelic.yml", "-javaagent:/opt/newrelic/newrelic.jar", "a8sidecar", "--register", "--supervise", "java", "-jar", "-Dspring.profiles.active=docker", "/digitalbanking-investmentsservice/target/investmentservices-1.0.war"]
+#"-Dnewrelic-config-file=/opt/newrelic/newrelic.yml", "-javaagent:/opt/newrelic/newrelic.jar",
+ENTRYPOINT ["a8sidecar", "--register", "--supervise", "java", "-jar", "-Dspring.profiles.active=docker", "/digitalbanking-investmentsservice/target/investmentservices-1.0.war"]
