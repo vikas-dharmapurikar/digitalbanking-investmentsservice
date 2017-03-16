@@ -23,4 +23,4 @@ COPY newrelic/ /opt/
 
 EXPOSE 8150
 
-ENTRYPOINT ["a8sidecar", "--register", "--supervise", "java", "-jar", "-Dnewrelic-config-file=/opt/newrelic/newrelic.yml", "-javaagent:/opt/newrelic/newrelic.jar", "-Dspring.profiles.active=docker", "/digitalbanking-investmentsservice/target/investmentservices-1.0.war"]
+ENTRYPOINT ["a8sidecar", "--register", "--supervise", "java", "-jar", "-Dnewrelic-config-file=/opt/newrelic.yml", "-javaagent:/opt/newrelic.jar", "-Dspring.profiles.active=docker", "/digitalbanking-investmentsservice/target/investmentservices-1.0.war"]
